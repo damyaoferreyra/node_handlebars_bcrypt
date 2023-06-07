@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-body">
+                <h4>HASH VALIDATION</h4>
+                {{#if isHash}}
+                    <div class="alert alert-success">Is hash</div>
+                {{/if}}
+                {{#if isNotHash}}
+                    <div class="alert alert-danger">No is hash</div>
+                {{/if}}
+                <form action="/bcrypt/comparebleHash" method="post">
+                    <label for="wordCompareble">WORD:</label>
+                    <input type="text" name="wordCompareble" placeholder="Type the word to be compared." class="form-control" required value={{wordCompareble}}>
+                    <br>                    
+                    <label for="hashComparable">HASH</label>
+                    <input type="text" name="hashComparable" placeholder="Enter validation hash" class="form-control" required value={{hashComparable}}>
+                    <br>
+                    <button type="submit" class="btn btn-success btn-block">VALIDATE</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h4>GENERATE HASH</h4>
+                <form action="/bcrypt/generatorHash" method="post">
+                    <label for="generatorWord">WORD:</label>
+                    <input type="text" name="generatorWord" placeholder="Type the word for hash generation." class="form-control" required value={{generatorWord}}>
+                    <br>                    
+                    <label for="generatorHash">HASH</label>
+                    <input type="text" name="generatorHash" value="{{hash}}" class="form-control" readonly>
+                    <br>
+                    <button type="submit" class="btn btn-success btn-block">GENERATE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
